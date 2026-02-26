@@ -4,7 +4,7 @@
   const qs = (s, ctx = document) => ctx.querySelector(s);
   const qsa = (s, ctx = document) => [...ctx.querySelectorAll(s)];
 
-  // BANCO DE DADOS COMPLETO
+
   const DISEASE_DATA = Object.freeze({
     dengue: {
       title: 'Dengue',

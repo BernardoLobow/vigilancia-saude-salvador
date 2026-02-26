@@ -1,7 +1,3 @@
-/* ARQUITETURA: ITCSS/BEM simplificado 
-  Foco em escalabilidade e redução de especificidade.
-*/
-
 :root {
   /* Design Tokens - Cores */
   --color-primary: #054a8a;
@@ -17,7 +13,7 @@
   --grad-bg: linear-gradient(180deg, #e8f4fb 0%, #dfeff8 50%, #eaf6fd 100%);
   --overlay-dark: linear-gradient(180deg, rgba(3, 22, 45, 0.7), rgba(3, 22, 45, 0.4));
 
-  /* Tipografia Baseada em Fluid Design */
+  /* Fontes Baseada em Fluid Design */
   --font-main: 'Poppins', system-ui, -apple-system, sans-serif;
   --text-base: 1rem; /* 16px */
   --text-sm: 0.875rem; /* 14px */

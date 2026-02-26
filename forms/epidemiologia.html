@@ -58,7 +58,7 @@
 
       const fd = new FormData(form);
 
-      // MAPEAMENTO SÊNIOR: Ajustando campos do HTML para o que o PHP espera
+      // MAPEAMENTO: Ajustando campos do HTML para o que o PHP espera
       // O PHP espera 'date', 'type' e 'local_text'
       fd.append('date', new Date().toISOString().split('T')[0]); // Data atual
       fd.append('type', 'Notificação Geral');
@@ -66,7 +66,6 @@
       fd.append('profile', 'Paciente'); // Campo obrigatório no PHP
 
       try {
-        // O ENDPOINT QUE VOCÊ PERGUNTOU:
         const endpoint = './api/notifications.php'; 
         
         const res = await fetch(endpoint, {
