@@ -7,7 +7,7 @@
   --color-text-dark: #243142;
   --color-text-muted: #4b5b69;
   --color-white: #ffffff;
-  
+
   /* Gradientes */
   --grad-primary: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
   --grad-bg: linear-gradient(180deg, #e8f4fb 0%, #dfeff8 50%, #eaf6fd 100%);
@@ -15,12 +15,18 @@
 
   /* Fontes Baseada em Fluid Design */
   --font-main: 'Poppins', system-ui, -apple-system, sans-serif;
-  --text-base: 1rem; /* 16px */
-  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-sm: 0.875rem;
+  /* 14px */
 }
 
 /* 1. Reset & Base */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -34,7 +40,7 @@ body {
 /* 2. Layout Components */
 .navbar--custom {
   background: var(--grad-primary);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hero {
@@ -58,6 +64,7 @@ body {
   position: relative;
   z-index: 2;
 }
+
 /* HERO - Ajuste para permitir ancoragem na base */
 .hero {
   position: relative;
@@ -66,43 +73,51 @@ body {
   background-position: center;
   min-height: 540px;
   display: flex;
-  align-items: stretch; /* Estica as colunas para ocuparem a altura toda do azul */
+  align-items: stretch;
+  /* Estica as colunas para ocuparem a altura toda do azul */
   color: #fff;
-  overflow: hidden; /* Garante que a imagem não vaze para fora da seção */
+  overflow: hidden;
+  /* Garante que a imagem não vaze para fora da seção */
 }
+
 /* HERO - Estrutura Principal */
 .hero {
   position: relative;
   min-height: 540px;
   display: flex;
-  align-items: center; /* Mantém o TEXTO centralizado verticalmente */
+  align-items: center;
+  /* Mantém o TEXTO centralizado verticalmente */
   background: #03162d url('../assets/hero.jpg') center/cover no-repeat;
-  overflow: hidden; 
+  overflow: hidden;
 }
+
 /* Coluna da Médica */
 .hero .col-lg-5 {
   display: flex !important;
-  align-self: stretch; /* Faz a coluna ter a altura total do azul */
-  align-items: flex-end; /* Ancora o conteúdo no fundo */
+  align-self: stretch;
+  /* Faz a coluna ter a altura total do azul */
+  align-items: flex-end;
+  /* Ancora o conteúdo no fundo */
   justify-content: flex-end;
   padding-bottom: 0 !important;
 }
 
 .hero-figure {
   position: relative;
-  margin-bottom: -5px; /* Garante que não haja fresta branca */
+  margin-bottom: -5px;
+  /* Garante que não haja fresta branca */
   line-height: 0;
   z-index: 5;
 }
 
 .hero-img {
   /* Ajuste a altura para ela não ficar pequena demais nem gigante */
-  height: 500px; 
+  height: 500px;
   width: auto;
   display: block;
   object-fit: contain;
   /* Melhora a integração com o fundo */
-  filter: drop-shadow(-10px 0 20px rgba(0,0,0,0.4));
+  filter: drop-shadow(-10px 0 20px rgba(0, 0, 0, 0.4));
 }
 
 /* 3. UI Components */
@@ -111,12 +126,12 @@ body {
   border-radius: 12px;
   border: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .c-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary-custom {
@@ -135,7 +150,8 @@ body {
 
 /* 4. Footer (Ajustado conforme imagem enviada) */
 .site-footer {
-  background-color: #054a8a; /* Azul sólido conforme imagem */
+  background-color: #054a8a;
+  /* Azul sólido conforme imagem */
   color: var(--color-white);
   padding: 3rem 0 0;
 }
@@ -148,7 +164,7 @@ body {
 }
 
 .footer__link {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -172,6 +188,11 @@ body {
 
 /* 6. Media Queries Modernas */
 @media (max-width: 991px) {
-  .hero__figure { display: none; }
-  .section-padding { padding: 2rem 0; }
+  .hero__figure {
+    display: none;
+  }
+
+  .section-padding {
+    padding: 2rem 0;
+  }
 }

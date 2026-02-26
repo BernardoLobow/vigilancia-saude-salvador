@@ -49,7 +49,7 @@
   }
 
   function openDiseaseModal(key) {
-    const modalEl = qs('#diseaseModal'); 
+    const modalEl = qs('#diseaseModal');
     const data = DISEASE_DATA[key];
 
     if (!data) {
@@ -80,3 +80,48 @@
     });
   });
 })();
+
+// Lógica para Envio de Denúncia de Descarte de Lixo
+const formLixo = document.querySelector('#formDenunciaLixo');
+
+if (formLixo) {
+  formLixo.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Feedback visual: desativa o botão enquanto envia
+    const btnSubmit = formLixo.querySelector('button[type="submit"]');
+    const originalText = btnSubmit.textContent;
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'A enviar...';
+
+    const formData = new FormData(formLixo);
+
+    try {
+      const response = await fetch('./api/denuncias.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Sucesso! A sua denúncia de descarte de lixo foi registada.');
+        formLixo.reset();
+
+        // Fecha o modal automaticamente após o sucesso
+        const modalElement = document.getElementById('denunciaModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        if (modalInstance) modalInstance.hide();
+      } else {
+        alert('Erro: ' + (result.error || 'Falha ao processar denúncia.'));
+      }
+    } catch (error) {
+      console.error('Erro na comunicação com a API:', error);
+      alert('Erro de conexão. Verifique se o servidor está a correr.');
+    } finally {
+      // Restaura o botão
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = originalText;
+    }
+  });
+}
