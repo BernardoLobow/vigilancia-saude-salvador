@@ -1,0 +1,181 @@
+/* ARQUITETURA: ITCSS/BEM simplificado 
+  Foco em escalabilidade e redução de especificidade.
+*/
+
+:root {
+  /* Design Tokens - Cores */
+  --color-primary: #054a8a;
+  --color-accent: #0b6ebf;
+  --color-success: #16823a;
+  --color-danger: #e23d3d;
+  --color-text-dark: #243142;
+  --color-text-muted: #4b5b69;
+  --color-white: #ffffff;
+  
+  /* Gradientes */
+  --grad-primary: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  --grad-bg: linear-gradient(180deg, #e8f4fb 0%, #dfeff8 50%, #eaf6fd 100%);
+  --overlay-dark: linear-gradient(180deg, rgba(3, 22, 45, 0.7), rgba(3, 22, 45, 0.4));
+
+  /* Tipografia Baseada em Fluid Design */
+  --font-main: 'Poppins', system-ui, -apple-system, sans-serif;
+  --text-base: 1rem; /* 16px */
+  --text-sm: 0.875rem; /* 14px */
+}
+
+/* 1. Reset & Base */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--grad-bg);
+  color: var(--color-text-dark);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Layout Components */
+.navbar--custom {
+  background: var(--grad-primary);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.hero {
+  position: relative;
+  min-height: clamp(400px, 60vh, 540px);
+  display: grid;
+  align-items: center;
+  background: #03162d url('../assets/hero.jpg') center/cover no-repeat;
+  color: var(--color-white);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-dark);
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+}
+/* HERO - Ajuste para permitir ancoragem na base */
+.hero {
+  position: relative;
+  background-image: url('../assets/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 540px;
+  display: flex;
+  align-items: stretch; /* Estica as colunas para ocuparem a altura toda do azul */
+  color: #fff;
+  overflow: hidden; /* Garante que a imagem não vaze para fora da seção */
+}
+/* HERO - Estrutura Principal */
+.hero {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center; /* Mantém o TEXTO centralizado verticalmente */
+  background: #03162d url('../assets/hero.jpg') center/cover no-repeat;
+  overflow: hidden; 
+}
+/* Coluna da Médica */
+.hero .col-lg-5 {
+  display: flex !important;
+  align-self: stretch; /* Faz a coluna ter a altura total do azul */
+  align-items: flex-end; /* Ancora o conteúdo no fundo */
+  justify-content: flex-end;
+  padding-bottom: 0 !important;
+}
+
+.hero-figure {
+  position: relative;
+  margin-bottom: -5px; /* Garante que não haja fresta branca */
+  line-height: 0;
+  z-index: 5;
+}
+
+.hero-img {
+  /* Ajuste a altura para ela não ficar pequena demais nem gigante */
+  height: 500px; 
+  width: auto;
+  display: block;
+  object-fit: contain;
+  /* Melhora a integração com o fundo */
+  filter: drop-shadow(-10px 0 20px rgba(0,0,0,0.4));
+}
+
+/* 3. UI Components */
+.c-card {
+  background: var(--color-white);
+  border-radius: 12px;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.c-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.btn-primary-custom {
+  background-color: var(--color-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: filter 0.2s;
+}
+
+.btn-primary-custom:hover {
+  filter: brightness(1.2);
+  color: var(--color-white);
+}
+
+/* 4. Footer (Ajustado conforme imagem enviada) */
+.site-footer {
+  background-color: #054a8a; /* Azul sólido conforme imagem */
+  color: var(--color-white);
+  padding: 3rem 0 0;
+}
+
+.footer__heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.footer__link {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__link:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+/* 5. Utilitários de Acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* 6. Media Queries Modernas */
+@media (max-width: 991px) {
+  .hero__figure { display: none; }
+  .section-padding { padding: 2rem 0; }
+}

@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portal de Vigilância em Saúde - Dados sobre doenças e prevenção.">
+  <title>Vigilância em Saúde | Transparência e Prevenção</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg topbar sticky-top" aria-label="Navegação principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#inicio">
+        <img src="assets/logo.png" alt="Logotipo Vigilância em Saúde" class="logo me-2">
+        <span class="text-white fw-bold">Vigilância em Saúde</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+              aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto gap-2">
+          <li><a class="nav-link" href="#inicio">Início</a></li>
+          <li><a class="nav-link" href="#situacao">Situação</a></li>
+          <li><a class="nav-link" href="#doencas">Doenças</a></li>
+          <li><a class="nav-link" href="#campanhas">Campanhas</a></li>
+          <li><a class="nav-link btn btn-sm btn-light text-primary px-3" href="#notificar">Notificar um Caso</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1>Transparência em Saúde para a Comunidade</h1>
+          <p class="lead">Acompanhe os dados atualizados sobre doenças, campanhas de saúde e indicadores da sua região. Informação acessível para toda a comunidade.</p>
+          <div class="d-flex gap-3 flex-wrap mt-4">
+            <a class="btn btn-cta shadow" href="#campanhas">Acessar Campanhas Ativas</a>
+            <a class="btn btn-cta-outline" href="#notificar">Notificar um Caso</a>
+          </div>
+          <p class="mt-3 hero-sub">Cuidar da saúde é também garantir o acesso à informação.</p>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block">
+          <div class="hero-figure">
+            <img src="assets/hero-doctor.png" alt="Profissional de Saúde" class="hero-img" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="situacao" class="section-info py-5">
+      <div class="container">
+        <div class="row g-4">
+          <article class="col-lg-8">
+            <h2>Cuidados com a Saúde no Engenho Velho</h2>
+            <p>Este painel foi criado para aproximar a informação da comunidade. Aqui você encontra dados sobre doenças mais recorrentes em sua região e formas de participação popular.</p>
+            <ul class="mt-3">
+              <li>Veja os dados atualizados e participe das decisões.</li>
+              <li>A limpeza e o descarte correto reduzem riscos.</li>
+            </ul>
+          </article>
+          <aside class="col-lg-4">
+            <div class="card card-campaign border-0">
+              <img src="assets/lixo.jpg" alt="Descarte correto do lixo" loading="lazy">
+              <div class="p-3">
+                <h5 class="mb-2">Descarte Correto do Lixo</h5>
+                <p class="small text-muted">Evite focos de mosquitos. Utilize embalagens adequadas.</p>
+                <button class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#denunciaModal">Denunciar local</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="notificar" class="py-5 bg-light">
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col-lg-7">
+            <h4>Notifique um caso</h4>
+            <p>Se você observou um sintoma ou condição de risco, notifique pelo formulário abaixo.</p>
+            <a class="btn btn-primary px-4 py-2" href="./forms/epidemiologia.html" target="_blank" rel="noopener">
+              Abrir Formulário de Notificação
+            </a>
+            <p class="mt-3 small text-muted">As respostas são anônimas e para fins de vigilância.</p>
+          </div>
+          <div class="col-lg-4 offset-lg-1">
+            <aside class="side-box sticky">
+              <h5 class="mb-2">Fique por dentro</h5>
+              <p class="small text-muted mb-3">Receba alertas de saúde no seu WhatsApp:</p>
+              <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#whatsappModal">Inscrever-se nos alertas</button>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="doencas" class="py-5 bg-white">
+  <div class="container">
+    <h2 class="h4 fw-bold">Principais Doenças e Como se Prevenir</h2>
+    <p class="lead">Informação simples e prática para proteger sua família.</p>
+
+    <div class="row g-3 mb-4 align-items-center">
+      <div class="col-md-5">
+        <input id="searchDisease" class="form-control" placeholder="Buscar doença (ex: dengue)">
+      </div>
+      <div class="col-md-4">
+        <select id="filterType" class="form-select">
+          <option value="all">Todos os tipos</option>
+          <option value="vetor">Transmitidas por vetor</option>
+          <option value="viral">Viral</option>
+          <option value="bacteriana">Bacteriana</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button id="clearFilters" class="btn btn-outline-secondary w-100">Limpar Filtros</button>
+      </div>
+    </div>
+
+    <div class="row g-3" id="diseaseGrid">
+      
+      <div class="col-sm-6 col-md-4 disease-card" data-type="vetor" data-name="Dengue">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold text-primary">Dengue</h5>
+            <p class="card-text small">Febre alta e dores no corpo. Transmitida pelo mosquito.</p>
+            <div class="mt-auto">
+              <button class="btn btn-primary btn-sm btn-know w-100 mb-2" data-disease="dengue">Saiba mais</button>
+              <a href="#notificar" class="btn btn-outline-primary btn-sm w-100">Notificar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 disease-card" data-type="vetor" data-name="Zika">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold text-primary">Zika</h5>
+            <p class="card-text small">Atenção especial para gestantes. Transmitida pelo Aedes.</p>
+            <div class="mt-auto">
+              <button class="btn btn-primary btn-sm btn-know w-100 mb-2" data-disease="zika">Saiba mais</button>
+              <a href="#notificar" class="btn btn-outline-primary btn-sm w-100">Notificar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 disease-card" data-type="bacteriana" data-name="Leptospirose">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold text-primary">Leptospirose</h5>
+            <p class="card-text small">Contágio por água ou lama contaminada com urina de rato.</p>
+            <div class="mt-auto">
+              <button class="btn btn-primary btn-sm btn-know w-100 mb-2" data-disease="lepto">Saiba mais</button>
+              <a href="#notificar" class="btn btn-outline-primary btn-sm w-100">Notificar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 disease-card" data-type="viral" data-name="COVID-19">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold text-primary">COVID-19</h5>
+            <p class="card-text small">Doença respiratória viral. Vacinação é a melhor prevenção.</p>
+            <div class="mt-auto">
+              <button class="btn btn-primary btn-sm btn-know w-100 mb-2" data-disease="covid">Saiba mais</button>
+              <a href="#notificar" class="btn btn-outline-primary btn-sm w-100">Notificar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 disease-card" data-type="viral" data-name="Gripe">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold text-primary">Gripe (Influenza)</h5>
+            <p class="card-text small">Sintomas respiratórios sazonais. Lave sempre as mãos.</p>
+            <div class="mt-auto">
+              <button class="btn btn-primary btn-sm btn-know w-100 mb-2" data-disease="gripe">Saiba mais</button>
+              <a href="#notificar" class="btn btn-outline-primary btn-sm w-100">Notificar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <section id="campanhas" class="py-5 bg-white border-top">
+      <div class="container">
+        <h4 class="mb-4">Campanhas</h4>
+        <div class="row gy-3">
+          <div class="col-md-4">
+            <div class="p-3 border rounded h-100 shadow-sm">
+              <h6>Mutirão de Limpeza</h6>
+              <p class="small text-muted">Participe do próximo mutirão no bairro.</p>
+              <a href="#" class="btn btn-link btn-sm p-0">Ver detalhes</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded h-100 shadow-sm">
+              <h6>Vacinação Contra Dengue</h6>
+              <p class="small text-muted">Locais e datas atualizadas.</p>
+              <a href="#" class="btn btn-link btn-sm p-0">Ver detalhes</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded h-100 shadow-sm">
+              <h6>Alfabetização Digital</h6>
+              <p class="small text-muted">Aprenda a usar este portal.</p>
+              <a href="#" class="btn btn-link btn-sm p-0">Inscrever-se</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4 align-items-start">
+          <div class="col-lg-4 text-center text-lg-start">
+            <img src="assets/logo.png" alt="logo" class="footer-logo mb-3">
+            <h6 class="footer-heading">CONTATO</h6>
+            <address class="footer-contact small mb-0">
+              <strong>Whatsapp:</strong> (71) 9xxxx-xxxx<br>
+              <strong>Email:</strong> faleconosco@saude.ba.gov.br
+            </address>
+          </div>
+          <div class="col-md-4">
+            <h6 class="footer-heading">Links úteis</h6>
+            <ul class="footer-links list-unstyled small">
+              <li><a href="#">Termos de uso</a></li>
+              <li><a href="#">Política de dados</a></li>
+              <li><a href="#">Link direto SUVISE/BA</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="footer-heading">Apoio</h6>
+            <p class="small opacity-75">Universidade Federal da Bahia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <small>© <span id="anoAtual"></span> Vigilância em Saúde — Todos os direitos reservados</small>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="denunciaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Denunciar Descarte Irregular</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="denunciaForm">
+            <div class="mb-3">
+              <label class="form-label">Localização</label>
+              <input type="text" class="form-control" required placeholder="Endereço ou referência">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Descrição</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Enviar Denúncia</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="whatsappModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Alertas WhatsApp</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="waForm">
+            <div class="mb-3">
+              <label class="form-label small">Seu número</label>
+              <input type="tel" class="form-control" placeholder="71 9XXXX-XXXX" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Confirmar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="modal fade" id="diseaseModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold" id="diseaseTitle">Detalhes</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body p-4">
+        <p id="diseaseSummary" class="text-muted mb-4"></p>
+        
+        <h6 class="fw-bold text-primary">Sinais e Sintomas:</h6>
+        <ul id="diseaseSymptoms" class="mb-4"></ul>
+        
+        <h6 class="fw-bold text-success">Como Prevenir:</h6>
+        <ul id="diseasePrevention" class="mb-4"></ul>
+
+        <div class="alert alert-warning py-2 small">
+          <strong>Quando procurar ajuda?</strong><br>
+          <span id="diseaseWhen"></span>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <a href="#notificar" class="btn btn-primary" data-bs-dismiss="modal">Notificar este sintoma</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>document.getElementById('anoAtual').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Notificação Epidemiológica | Vigilância em Saúde</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar--custom py-3 px-4 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span class="text-white fw-bold">Vigilância em Saúde</span>
+      <a href="index.html" class="btn btn-sm btn-outline-light">Voltar ao Início</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <section class="c-card p-4 p-md-5">
+          <header class="mb-4">
+            <h1 class="h2 fw-bold text-primary">Notificação Epidemiológica</h1>
+            <p class="text-muted">Engenho Velho e Região - Salvador/BA</p>
+          </header>
+
+          <form id="epiForm" class="needs-validation" novalidate>
+            <div class="mb-4">
+              <label for="nome" class="form-label fw-bold">Nome do Paciente</label>
+              <input type="text" id="nome" name="nome" class="form-control form-control-lg" required>
+            </div>
+            
+            <div class="d-grid mt-5">
+              <button type="submit" class="btn btn-primary-custom btn-lg" id="btnSubmit">
+                Enviar Notificação
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const form = document.querySelector('#epiForm');
+    const btnSubmit = document.querySelector('#btnSubmit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Feedback visual imediato
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Enviando...';
+
+      const fd = new FormData(form);
+
+      // MAPEAMENTO SÊNIOR: Ajustando campos do HTML para o que o PHP espera
+      // O PHP espera 'date', 'type' e 'local_text'
+      fd.append('date', new Date().toISOString().split('T')[0]); // Data atual
+      fd.append('type', 'Notificação Geral');
+      fd.append('local_text', 'Engenho Velho'); 
+      fd.append('profile', 'Paciente'); // Campo obrigatório no PHP
+
+      try {
+        // O ENDPOINT QUE VOCÊ PERGUNTOU:
+        const endpoint = './api/notifications.php'; 
+        
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: fd
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert('Notificação enviada com sucesso!');
+          form.reset();
+        } else {
+          throw new Error(data.error || 'Erro ao enviar');
+        }
+      } catch (err) {
+        console.error('Erro na API:', err);
+        alert('Falha ao enviar: ' + err.message);
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Enviar Notificação';
+      }
+    });
+  </script>
+</body>
+</body>
+</html>
